@@ -34,7 +34,7 @@ logger.setLevel(logging.DEBUG)
 def parse(announcement):
     global name
 
-    if 'Movie/' not in announcement:
+    if '[Movie/' not in announcement:
         return
     decolored = utils.strip_irc_color_codes(announcement)
 
