@@ -20,6 +20,9 @@ torrent_pass =
 
 [ptp]
 nick =
+site_username = 
 nick_pass =
 auth_key = 
 torrent_pass = 
+irc_key = 
+announcer = Hummingbird

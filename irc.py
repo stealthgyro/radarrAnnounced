@@ -28,11 +28,25 @@ class IRC(BotBase):
         self.tracking = track
 
     def on_connect(self):
-        logger.info("Connected to: %s, joining %s", self.tracking['irc_host'], self.tracking['irc_channel'])
+        logger.info("Connecting to: %s, joining %s", self.tracking['irc_host'], self.tracking['irc_channel'])
 
         nick_pass = cfg["{}.nick_pass".format(self.tracking['name'].lower())]
+        #authstring = self.tracking['authstring']
+        #announcer = self.tracking['announcer']
+        irc_channel = self.tracking['irc_channel']
+        irc_key = cfg["{}.irc_key".format(self.tracking['name'].lower())]
+        torrent_pass = cfg["{}.torrent_pass".format(self.tracking['name'].lower())]
+        site_username = cfg["{}.site_username".format(self.tracking['name'].lower())]
+        announcer = cfg["{}.announcer".format(self.tracking['name'].lower())]
+        authstring = 'ENTER {} {} {}'.format(site_username, irc_key, irc_channel)
+        logger.info(authstring)
+        
         if nick_pass is not None and len(nick_pass) > 1:
             self.rawmsg('NICKSERV', 'IDENTIFY', nick_pass)
+
+        #only assuming authstring if announcer, this was for PTP need to look into making this more dynamic
+        if announcer is not None and len(announcer) > 1:
+            self.message(announcer, authstring)
 
         self.join(self.tracking['irc_channel'])
 

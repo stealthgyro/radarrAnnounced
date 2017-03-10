@@ -13,14 +13,19 @@ cfg = config.init()
 ############################################################
 name = "PTP"
 irc_host = "irc.passthepopcorn.me"
-irc_port = 6667
+irc_port = 7000
 irc_channel = "#ptp-announce"
-irc_tls = False
+irc_tls = True
 irc_tls_verify = False
 
 # these are loaded by init
 auth_key = None
 torrent_pass = None
+nick = None
+irc_key = None
+announcer = None
+authstring = None
+site_username = None
 
 logger = logging.getLogger(name.upper())
 logger.setLevel(logging.DEBUG)
@@ -67,6 +72,12 @@ def init():
 
     auth_key = cfg["{}.auth_key".format(name.lower())]
     torrent_pass = cfg["{}.torrent_pass".format(name.lower())]
+    
+    #site_username = cfg["{}.site_username".format(name.lower())]
+    #irc_key = cfg["{}.irc_key".format(name.lower())]
+    #nick = cfg["{}.nick".format(name.lower())]
+    #announcer = cfg["{}.announcer".format(name.lower())]
+    #authstring = "ENTER {} {} {}".format(site_username, irc_key, irc_channel)
 
     # check auth_key && torrent_pass was supplied
     if not auth_key or not torrent_pass:
