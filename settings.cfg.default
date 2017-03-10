@@ -17,6 +17,7 @@ nick =
 nick_pass =
 auth_key = 
 torrent_pass = 
+announcer = 
 
 [ptp]
 nick =

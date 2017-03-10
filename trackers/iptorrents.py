@@ -13,9 +13,9 @@ cfg = config.init()
 ############################################################
 name = "IPTorrents"
 irc_host = "irc.iptorrents.com"
-irc_port = 6667
+irc_port = 6697
 irc_channel = "#ipt.announce"
-irc_tls = False
+irc_tls = True
 irc_tls_verify = False
 
 # these are loaded by init

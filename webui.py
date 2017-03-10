@@ -105,38 +105,16 @@ def trackers():
             cfg['iptorrents.nick_pass'] = request.form['iptorrents_nickpassword']
             logger.debug("saved iptorrents settings")
 
-        if 'morethan_torrentpass' in request.form:
-            cfg['morethan.auth_key'] = request.form['morethan_authkey']
-            cfg['morethan.torrent_pass'] = request.form['morethan_torrentpass']
-            cfg['morethan.nick'] = request.form['morethan_nick']
-            cfg['morethan.nick_pass'] = request.form['morethan_nickpassword']
-            logger.debug("saved morethan settings")
+        if 'ptp_torrentpass' in request.form:
+            cfg['ptp.auth_key'] = request.form['ptp_authkey']
+            cfg['ptp.torrent_pass'] = request.form['ptp_torrentpass']
+            cfg['ptp.nick'] = request.form['ptp_nick']
+            cfg['ptp.site_username'] = request.form['ptp_site_username']
+            cfg['ptp.nick_pass'] = request.form['ptp_nickpassword']
+            cfg['ptp.irc_key'] = request.form['ptp_irc_key']
+            cfg['ptp.announcer'] = request.form['ptp_announcer']
+            logger.debug("saved ptp settings")
 
-        if 'btn_torrentpass' in request.form:
-            cfg['btn.auth_key'] = request.form['btn_authkey']
-            cfg['btn.torrent_pass'] = request.form['btn_torrentpass']
-            cfg['btn.nick'] = request.form['btn_nick']
-            cfg['btn.nick_pass'] = request.form['btn_nickpassword']
-            logger.debug("saved btn settings")
-
-        if 'ttn_torrentpass' in request.form:
-            cfg['ttn.auth_key'] = request.form['ttn_authkey']
-            cfg['ttn.torrent_pass'] = request.form['ttn_torrentpass']
-            cfg['ttn.nick'] = request.form['ttn_nick']
-            cfg['ttn.nick_pass'] = request.form['ttn_nickpassword']
-            logger.debug("saved ttn settings")
-
-        if 'freshon_torrentpass' in request.form:
-            cfg['freshon.torrent_pass'] = request.form['freshon_torrentpass']
-            cfg['freshon.nick'] = request.form['freshon_nick']
-            cfg['freshon.nick_pass'] = request.form['freshon_nickpassword']
-            logger.debug("saved freshon settings")
-
-        if 'hdtorrents_cookies' in request.form:
-            cfg['hdtorrents.cookies'] = request.form['hdtorrents_cookies']
-            cfg['hdtorrents.nick'] = request.form['hdtorrents_nick']
-            cfg['hdtorrents.nick_pass'] = request.form['hdtorrents_nickpassword']
-            logger.debug("saved hdtorrents settings")
 
         cfg.sync()
 

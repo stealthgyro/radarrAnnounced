@@ -16,6 +16,7 @@ cfg = config.init()
 class IRC(BotBase):
     tracking = None
     RECONNECT_MAX_ATTEMPTS = 100
+    announcer = None
 
     # temp fix until pydle handles connect failures
     def connect(self, *args, **kwargs):
@@ -31,27 +32,24 @@ class IRC(BotBase):
         logger.info("Connecting to: %s, joining %s", self.tracking['irc_host'], self.tracking['irc_channel'])
 
         nick_pass = cfg["{}.nick_pass".format(self.tracking['name'].lower())]
-        irc_channel = self.tracking['irc_channel']
-        #irc_key = cfg["{}.irc_key".format(self.tracking['name'].lower())]
         torrent_pass = cfg["{}.torrent_pass".format(self.tracking['name'].lower())]
-        #site_username = cfg["{}.site_username".format(self.tracking['name'].lower())]
-        #announcer = cfg["{}.announcer".format(self.tracking['name'].lower())]
-        #authstring = 'ENTER {} {} {}'.format(site_username, irc_key, irc_channel)
-        #logger.info(authstring)
-        
-        if nick_pass is not None and len(nick_pass) > 1:
-            self.rawmsg('NICKSERV', 'IDENTIFY', nick_pass)
+        announcer = cfg["{}.announcer".format(self.tracking['name'].lower())]
+
 
         #only assuming authstring if announcer, this was for PTP need to look into making this more dynamic
-        if cfg["{}.announcer".format(self.tracking['name'].lower())] is not None and len(cfg["{}.announcer".format(self.tracking['name'].lower())]) > 1:
+        if announcer is not None and len(announcer) > 1:
             announcer = cfg["{}.announcer".format(self.tracking['name'].lower())]
             irc_channel = self.tracking['irc_channel']
             irc_key = cfg["{}.irc_key".format(self.tracking['name'].lower())]
             site_username = cfg["{}.site_username".format(self.tracking['name'].lower())]
             authstring = 'ENTER {} {} {}'.format(site_username, irc_key, irc_channel)
+            self.rawmsg('NICKSERV', 'IDENTIFY', nick_pass)
             self.message(announcer, authstring)
-
-        self.join(self.tracking['irc_channel'])
+        elif nick_pass is not None and len(nick_pass) > 1:
+            self.rawmsg('NICKSERV', 'IDENTIFY', nick_pass)
+            self.join(self.tracking['irc_channel'])
+        else:
+            self.join(self.tracking['irc_channel'])
 
     def on_raw(self, message):
         super().on_raw(message)
