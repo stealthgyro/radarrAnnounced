@@ -1,6 +1,7 @@
-# sonarrAnnounced
+# radarrAnnounced
 
-Python script to notify sonarr of tracker announcements from IRC announce channels. 
+Python script to notify sonarr of tracker announcements from IRC announce channels.  (literally just forked so likely still sonarrAnnounced, work has just begun DON'T EXPECT THIS TO WORK!))
+1st draft after all the changes....
 
 ## Requirements
 1. Python 3.5.2 or newer
@@ -19,9 +20,6 @@ Open to suggestions/pull requests!
 ## To-Do
 
 
-## Feature Requests
-Request features at [FeatHub](http://feathub.com/l3uddz/sonarrAnnounced)
-
 
 # Installation (on Debian Jessie)
 ## Python 3.5.2
@@ -34,20 +32,17 @@ Request features at [FeatHub](http://feathub.com/l3uddz/sonarrAnnounced)
 
 This should automatically install pip3.5 for you
 
-## sonarrAnnounced
+## radarrAnnounced
 1. `cd /opt`
-2. `sudo git clone https://github.com/l3uddz/sonarrAnnounced`
-3. `sudo chown -R user:group sonarrAnnounced`
-4. `sudo pip3.5 install -r /opt/sonarrAnnounced/requirements.txt`
+2. `sudo git clone https://github.com/stealthgyro/radarrAnnounced`
+3. `sudo chown -R user:group radarrAnnounced`
+4. `sudo pip3.5 install -r /opt/radarrAnnounced/requirements.txt`
 5. `mv settings.cfg.default settings.cfg`
 6. `nano settings.cfg`
 - Configure it how you want
 7. Edit systemd/announced.service with your user and group
-8. `sudo cp announced.service /etc/systemd/system/announced.service`
+8. `sudo cp announced.service /etc/systemd/system/rannounced.service`
 9. `sudo systemctl daemon-reload`
-10. `sudo systemctl start announced`
+10. `sudo systemctl start rannounced`
 - Check it is working properly, http://localhost:PORT - use user/pass you chosen in the [server] section of settings.cfg
-11. if you want auto start @ boot, `sudo systemctl enable announced`
-
-# Installation videos
-1. Debian Jessie: https://youtu.be/oLiGMcUWiB0
+11. if you want auto start @ boot, `sudo systemctl enable rannounced`

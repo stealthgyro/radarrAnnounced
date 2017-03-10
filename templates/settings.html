@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sonarrAnnounced - Settings</title>
+    <title>radarrAnnounced - Settings</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700">
     <link rel="stylesheet" href="assets/css/user.css">
@@ -13,7 +13,7 @@
 <body>
     <nav class="navbar navbar-default" style="margin-bottom:0.5cm;">
         <div class="container-fluid">
-            <div class="navbar-header"><a class="navbar-brand navbar-link" href="/"><i class="glyphicon glyphicon-transfer"></i>sonarrAnnounced</a>
+            <div class="navbar-header"><a class="navbar-brand navbar-link" href="/"><i class="glyphicon glyphicon-transfer"></i>radarrAnnounced</a>
                 <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
             </div>
             <div class="collapse navbar-collapse" id="navcol-1">
@@ -51,12 +51,12 @@
                 </div>
             </fieldset>
             <fieldset>
-                <legend>Sonarr </legend>
-                <label for="sonarr_url">URL </label>
-                <input class="form-control input-sm" type="text" name="sonarr_url" value="{{ conf['sonarr.url'] }}" required="" placeholder="http://localhost:8989" id="sonarr_url" style="margin-bottom:0.2cm;width:75%;">
-                <label for="sonarr_apikey">API Key</label>
-                <input class="form-control input-sm" type="text" name="sonarr_apikey" value="{{ conf['sonarr.apikey'] }}" required="" placeholder="Retrieve from Sonarr Settings" id="sonarr_apikey" style="width:75%;margin-bottom:0.1cm;">
-                <button class="btn btn-default btn-xs pull-right" type="button" id="sonarr_check" style="margin-right:25%;">Check </button>
+                <legend>Radarr </legend>
+                <label for="radarr_url">URL </label>
+                <input class="form-control input-sm" type="text" name="radarr_url" value="{{ conf['radarr.url'] }}" required="" placeholder="http://localhost:8989" id="radarr_url" style="margin-bottom:0.2cm;width:75%;">
+                <label for="radarr_apikey">API Key</label>
+                <input class="form-control input-sm" type="text" name="radarr_apikey" value="{{ conf['radarr.apikey'] }}" required="" placeholder="Retrieve from radarr Settings" id="radarr_apikey" style="width:75%;margin-bottom:0.1cm;">
+                <button class="btn btn-default btn-xs pull-right" type="button" id="radarr_check" style="margin-right:25%;">Check </button>
             </fieldset>
             <button class="btn btn-primary" type="submit" id="save">Save </button>
         </form>

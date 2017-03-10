@@ -1,6 +1,6 @@
 [server]
-host = localhost
-port = 3467
+host = 0.0.0.0
+port = 3468
 user = admin
 pass = password
 
@@ -8,9 +8,9 @@ pass = password
 debug_file = true
 debug_console = true
 
-[sonarr]
+[radarr]
 apikey = YOUR-API-KEY
-url = http://localhost:8989
+url = http://localhost:7878
 
 [iptorrents]
 nick =
@@ -18,31 +18,8 @@ nick_pass =
 auth_key = 
 torrent_pass = 
 
-[morethan]
+[ptp]
 nick =
 nick_pass =
 auth_key = 
 torrent_pass = 
-
-[btn]
-nick =
-nick_pass =
-auth_key = 
-torrent_pass = 
-
-[ttn]
-nick = 
-nick_pass = 
-auth_key = 
-torrent_pass = 
-
-[freshon]
-nick = 
-nick_pass = 
-auth_key = 
-torrent_pass =
-
-[hdtorrents]
-nick =
-nick_pass =
-cookies =

@@ -3,7 +3,7 @@ import logging
 
 import config
 import db
-import sonarr
+import radarr
 import utils
 
 cfg = config.init()
@@ -11,10 +11,10 @@ cfg = config.init()
 ############################################################
 # Tracker Configuration
 ############################################################
-name = "MoreThan"
-irc_host = "irc.morethan.tv"
+name = "PTP"
+irc_host = "irc.passthepopcorn.me"
 irc_port = 6667
-irc_channel = "#announce"
+irc_channel = "#ptp-announce"
 irc_tls = False
 irc_tls_verify = False
 
@@ -25,37 +25,38 @@ torrent_pass = None
 logger = logging.getLogger(name.upper())
 logger.setLevel(logging.DEBUG)
 
-
 ############################################################
 # Tracker Framework (all trackers must follow)
 ############################################################
 # Parse announcement message
+torrent_title = None
+
 @db.db_session
 def parse(announcement):
-    global name
+    global name, torrent_title
 
     # extract required information from announcement
-    torrent_title = utils.str_before(announcement, ' - ')
+    torrent_title = utils.formatted_torrent_name(utils.str_before(announcement, ' - http'))
     torrent_id = utils.get_id(announcement, 1)
 
-    # pass announcement to sonarr
     if torrent_id is not None and torrent_title is not None:
         download_link = get_torrent_link(torrent_id, utils.replace_spaces(torrent_title, '.'))
 
         announced = db.Announced(date=datetime.datetime.now(), title=utils.replace_spaces(torrent_title, '.'),
                                  indexer=name, torrent=download_link)
-        approved = sonarr.wanted(torrent_title, download_link, name)
+        approved = radarr.wanted(torrent_title, download_link, name)
         if approved:
-            logger.debug("Sonarr approved release: %s", torrent_title)
+            logger.debug("Radarr approved release: %s", torrent_title)
             snatched = db.Snatched(date=datetime.datetime.now(), title=utils.replace_spaces(torrent_title, '.'),
                                    indexer=name, torrent=download_link)
         else:
-            logger.debug("Sonarr rejected release: %s", torrent_title)
+            logger.debug("Radarr rejected release: %s", torrent_title)
+        torrent_title = None
 
 
 # Generate torrent link
 def get_torrent_link(torrent_id, torrent_name):
-    torrent_link = "https://www.morethan.tv/torrents.php?action=download&id={}&authkey={}&torrent_pass={}" \
+    torrent_link = "https://passthepopcorn.me/torrents.php?action=download&id={}&authkey={}&torrent_pass={}" \
         .format(torrent_id, auth_key, torrent_pass)
     return torrent_link
 
