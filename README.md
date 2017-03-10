@@ -1,6 +1,6 @@
 # radarrAnnounced
 
-Python script to notify radarr of tracker announcements from IRC announce channels.  (literally just forked so likely still sonarrAnnounced, work has just begun DON'T EXPECT THIS TO WORK!))
+Python script to notify radarr of tracker announcements from IRC announce channels.  (still an ealry fork of sonarrAnnounced, work has just begun DON'T EXPECT THIS TO WORK!))
 1st draft after all the changes....
 
 ## Requirements

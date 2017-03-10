@@ -35,7 +35,7 @@ class IRC(BotBase):
         #irc_key = cfg["{}.irc_key".format(self.tracking['name'].lower())]
         torrent_pass = cfg["{}.torrent_pass".format(self.tracking['name'].lower())]
         #site_username = cfg["{}.site_username".format(self.tracking['name'].lower())]
-        announcer = cfg["{}.announcer".format(self.tracking['name'].lower())]
+        #announcer = cfg["{}.announcer".format(self.tracking['name'].lower())]
         #authstring = 'ENTER {} {} {}'.format(site_username, irc_key, irc_channel)
         #logger.info(authstring)
         
@@ -43,7 +43,8 @@ class IRC(BotBase):
             self.rawmsg('NICKSERV', 'IDENTIFY', nick_pass)
 
         #only assuming authstring if announcer, this was for PTP need to look into making this more dynamic
-        if announcer is not None and len(announcer) > 1:
+        if cfg["{}.announcer".format(self.tracking['name'].lower())] is not None and len(cfg["{}.announcer".format(self.tracking['name'].lower())]) > 1:
+            announcer = cfg["{}.announcer".format(self.tracking['name'].lower())]
             irc_channel = self.tracking['irc_channel']
             irc_key = cfg["{}.irc_key".format(self.tracking['name'].lower())]
             site_username = cfg["{}.site_username".format(self.tracking['name'].lower())]

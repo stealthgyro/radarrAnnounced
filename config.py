@@ -12,8 +12,8 @@ def init():
     cfg.init('server.user', 'admin')
     cfg.init('server.pass', 'password')
 
-    cfg.init('sonarr.apikey', '')
-    cfg.init('sonarr.url', 'http://localhost:7878')
+    cfg.init('radarr.apikey', '')
+    cfg.init('radarr.url', 'http://localhost:7878')
 
     cfg.init('bot.debug_file', True)
     cfg.init('bot.debug_console', True)

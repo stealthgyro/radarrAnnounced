@@ -48,7 +48,7 @@ def parse(announcement):
 
         announced = db.Announced(date=datetime.datetime.now(), title=utils.replace_spaces(torrent_title, '.'),
                                  indexer=name, torrent=download_link)
-        approved = radrr.wanted(torrent_title, download_link, name)
+        approved = radarr.wanted(torrent_title, download_link, name)
         if approved:
             logger.debug("Radarr approved release: %s", torrent_title)
             snatched = db.Snatched(date=datetime.datetime.now(), title=utils.replace_spaces(torrent_title, '.'),
