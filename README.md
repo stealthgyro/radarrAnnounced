@@ -1,6 +1,6 @@
 # radarrAnnounced
 
-Python script to notify radarr of tracker announcements from IRC announce channels.  (still an ealry fork of sonarrAnnounced, work has just begun DON'T EXPECT THIS TO WORK!))
+Python script to notify radarr of tracker announcements from IRC announce channels.  (while still an early fork with some ugly code, with some janky work arounds... it works for 2 tracks right now.))
 1st draft after all the changes....
 
 ## Requirements
@@ -8,7 +8,7 @@ Python script to notify radarr of tracker announcements from IRC announce channe
 2. requirements.txt modules
 
 ## Supported Trackers
-1. PTP (being worked on)
+1. PTP
 2. IPTorrents
 
 Open to suggestions/pull requests!
